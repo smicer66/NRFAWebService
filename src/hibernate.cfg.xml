@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+    <session-factory>
+
+         <!-- Database connection settings -->
+        <!-- <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost/probasepay</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password"></property>-->
+        <property name="connection.provider_class">com.zaxxer.hikari.hibernate.HikariConnectionProvider</property>
+        <property name="hikari.minimumIdle">5</property>
+        <property name="hikari.maximumPoolSize">10</property>
+        <property name="hikari.idleTimeout">120000</property>
+        <!-- <property name="hikari.idleTimeout">30000</property> -->
+        <property name="hikari.dataSourceClassName">com.microsoft.sqlserver.jdbc.SQLServerDataSource</property>
+        <property name="hikari.dataSource.url">jdbc:sqlserver://localhost:1433;databaseName=nrfa_live;</property>
+        <!-- <property name="hikari.dataSource.url">jdbc:sqlserver://localhost:1433;databaseName=nrfa_live;integratedSecurity=true;</property> -->
+        <property name="hikari.dataSource.user">nrfa_root</property>
+        <property name="hikari.dataSource.password">k0l0zaq1ZAQ!</property>
+        <!--<property name="hikari.dataSource.cachePrepStmts">true</property>
+        <property name="hikari.dataSource.prepStmtCacheSize">250</property>
+        <property name="hikari.dataSource.prepStmtCacheSqlLimit">2048</property>
+        <property name="hikari.dataSource.rewriteBatchedStatements">true</property>-->
+
+        <!-- JDBC connection pool (use the built-in)
+        <property name="connection.pool_size">1</property>-->
+
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.SQLServerDialect</property>
+
+        <property name="current_session_context_class">thread</property>
+
+
+        <!-- 
+        
+        <property name="connection.provider_class">com.zaxxer.hikari.hibernate.HikariConnectionProvider</property>
+        <property name="hikari.minimumIdle">5</property>
+        <property name="hikari.maximumPoolSize">10</property>
+        <property name="hikari.idleTimeout">120000</property>
+        <property name="hikari.dataSourceClassName">com.mysql.jdbc.jdbc2.optional.MysqlDataSource</property>
+        <property name="hikari.dataSource.url">jdbc:mysql://localhost/nrfa_live_mysql</property>
+        <property name="hikari.dataSource.user">root</property>
+        <property name="hikari.dataSource.password"></property>
+        <property name="hikari.dataSource.cachePrepStmts">true</property>
+        <property name="hikari.dataSource.prepStmtCacheSize">250</property>
+        <property name="hikari.dataSource.prepStmtCacheSqlLimit">2048</property>
+        <property name="hikari.dataSource.rewriteBatchedStatements">true</property>
+
+
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        
+        <property name="current_session_context_class">thread</property>
+         -->
+                
+
+
+		<!-- <property name="c3p0.acquire_increment">3</property> 
+		<property name="c3p0.idle_test_period">300</property> 
+		<property name="c3p0.max_size">100</property>
+		<property name="c3p0.max_statements">0</property> 
+		<property name="c3p0.min_size">10</property>
+		<property name="c3p0.timeout">5000</property>-->
+		
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">false</property>
+
+        <!-- Drop and re-create the database schema on startup -->
+        <property name="hbm2ddl.auto">update</property>
+
+		<mapping class="com.probase.nrfa.models.Acquirer"></mapping>
+        <mapping class="com.probase.nrfa.models.Province"></mapping>
+        <mapping class="com.probase.nrfa.models.District"></mapping>
+        <mapping class="com.probase.nrfa.models.Customer"></mapping>
+        <mapping class="com.probase.nrfa.models.Bank"></mapping>
+        <mapping class="com.probase.nrfa.models.Account"></mapping>
+        <mapping class="com.probase.nrfa.models.MerchantScheme"></mapping>
+        <mapping class="com.probase.nrfa.models.Merchant"></mapping>
+        <mapping class="com.probase.nrfa.models.Distributor"></mapping>
+        <mapping class="com.probase.nrfa.models.User"></mapping>
+        <mapping class="com.probase.nrfa.models.CardScheme"></mapping>
+        <mapping class="com.probase.nrfa.models.ECard"></mapping>
+        <mapping class="com.probase.nrfa.models.Device"></mapping>
+        <mapping class="com.probase.nrfa.models.Transaction"></mapping>
+        <mapping class="com.probase.nrfa.models.Setting"></mapping>
+        <mapping class="com.probase.nrfa.models.TransactionSwept"></mapping>
+        <mapping class="com.probase.nrfa.models.RequestTransactionReversal"></mapping>
+        <mapping class="com.probase.nrfa.models.TrafficScheme"></mapping>
+        <mapping class="com.probase.nrfa.models.TrafficTollRoute"></mapping>
+        <mapping class="com.probase.nrfa.models.TrafficTollRouteLane"></mapping>
+        <mapping class="com.probase.nrfa.models.TrafficTollPrice"></mapping>
+        <mapping class="com.probase.nrfa.models.Promotion"></mapping>
+        <mapping class="com.probase.nrfa.models.TrafficException"></mapping>
+        <mapping class="com.probase.nrfa.models.AuditTrail"></mapping>
+        <mapping class="com.probase.nrfa.models.SMSMesage"></mapping>
+        <mapping class="com.probase.nrfa.models.BatchEmail"></mapping>
+        <mapping class="com.probase.nrfa.models.Synchronizer"></mapping>
+        
+        <event type="pre-update">
+			<listener class="com.probase.nrfa.event.HibernateEventListener"/>
+		</event>
+		<event type="pre-insert">
+			<listener class="com.probase.nrfa.event.HibernateEventListener"/>
+		</event>
+
+    </session-factory>
+
+</hibernate-configuration>

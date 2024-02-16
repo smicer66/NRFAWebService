@@ -1,0 +1,5 @@
+package com.probase.nrfa.enumerations;
+
+public enum RoleType {
+	NFRA_ADMIN_STAFF, NFRA_TOLL_STAFF, PROBASE_STAFF, BANK_STAFF, DISTRIBUTOR_STAFF, NFRA_TOLL_STAFF_SUPERVISOR
+}
